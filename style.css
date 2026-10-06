@@ -1,0 +1,1508 @@
+/* ========================================
+   CELERITY DRINKS & FOODS
+   MAIN STYLESHEET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #071A2F;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(7, 26, 47, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 14px 0;
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        padding 0.3s ease;
+}
+
+.site-header.scrolled {
+    background: rgba(7, 26, 47, 0.97);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.28);
+    padding: 10px 0;
+}
+
+.header-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.brand img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.main-nav a {
+    position: relative;
+
+    font-size: 13px;
+    font-weight: 500;
+    color: #cbd5e1;
+
+    padding: 5px 0;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+
+    width: 0;
+    height: 2px;
+
+    background: #008DFF;
+
+    transition: width 0.25s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #ffffff;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+
+    padding: 12px 22px;
+    border-radius: 24px;
+
+    font-weight: 700;
+    font-size: 13px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-blue {
+    background: #008DFF;
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(0, 141, 255, 0.25);
+}
+
+.btn-blue:hover {
+    background: #0079dc;
+
+    box-shadow:
+        0 12px 30px rgba(0, 141, 255, 0.4);
+}
+
+.btn-gold {
+    background: #D4AF37;
+    color: #071A2F;
+
+    box-shadow:
+        0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+.btn-gold:hover {
+    background: #e2bd48;
+}
+
+.btn-white {
+    background: #ffffff;
+    color: #071A2F;
+}
+
+.button-ripple {
+    position: absolute;
+
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+
+    pointer-events: none;
+
+    transform: scale(0);
+    animation: buttonRipple 0.6s ease-out;
+}
+
+@keyframes buttonRipple {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+
+/* ========================================
+   MOBILE MENU
+======================================== */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+    height: 42px;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 10px;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 22px;
+    height: 2px;
+
+    background: #ffffff;
+    border-radius: 5px;
+
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    position: relative;
+
+    height: 88vh;
+    min-height: 620px;
+    max-height: 820px;
+
+    display: flex;
+    align-items: center;
+
+    padding-top: 75px;
+
+    overflow: hidden;
+
+    background: #071A2F;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    transform: none;
+
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 26, 47, 0.98) 0%,
+            rgba(7, 26, 47, 0.88) 32%,
+            rgba(7, 26, 47, 0.55) 60%,
+            rgba(7, 26, 47, 0.12) 100%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 560px;
+}
+
+.badge {
+    display: inline-block;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
+
+    margin-bottom: 18px;
+
+    animation: fadeUp 0.8s ease both;
+}
+
+.hero h1 {
+    font-size: 46px;
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    margin-bottom: 16px;
+
+    animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.hero h1 span {
+    color: #008DFF;
+}
+
+.hero p {
+    color: #cbd5e1;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+
+    max-width: 500px;
+
+    animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    animation: fadeUp 0.8s 0.3s ease both;
+}
+
+
+/* ========================================
+   PAGE HERO
+======================================== */
+
+.page-hero {
+    position: relative;
+
+    padding: 155px 24px 90px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0, 141, 255, 0.12),
+            transparent 45%
+        ),
+        #0B2340;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 141, 255, 0.05);
+
+    top: -250px;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.label {
+    color: #008DFF;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.page-hero h1 {
+    font-size: 48px;
+    line-height: 1;
+
+    margin: 14px 0 18px;
+}
+
+.page-hero h1 span {
+    color: #008DFF;
+}
+
+.page-hero p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: #94a3b8;
+
+    font-size: 15px;
+}
+
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.section {
+    padding: 90px 24px;
+}
+
+.section h2 {
+    line-height: 1.15;
+}
+
+
+/* ========================================
+   TRUSTED
+======================================== */
+
+.trusted {
+    background: #F8FAFC;
+    color: #071A2F;
+
+    padding: 28px 24px;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 40px;
+
+    flex-wrap: wrap;
+
+    font-weight: 700;
+    font-size: 14px;
+}
+
+
+/* ========================================
+   PRODUCT GRID
+======================================== */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+
+    margin-top: 40px;
+}
+
+.product-card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    padding-bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(0, 141, 255, 0.35);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.product-card img {
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #f1f5f9;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.04);
+
+    filter: brightness(1.05);
+}
+
+.product-card h3 {
+    margin: 18px 16px 7px;
+
+    font-size: 19px;
+}
+
+.product-card p {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    padding: 0 22px;
+
+    margin-bottom: 18px;
+
+    flex-grow: 1;
+}
+
+.product-card .btn {
+    margin-top: auto;
+}
+
+
+/* ========================================
+   DIVISION CARDS
+======================================== */
+
+.div-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.div-card {
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.div-card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(0, 141, 255, 0.35);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ========================================
+   WHY US
+======================================== */
+
+.why-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+.why-list {
+    margin-top: 24px;
+}
+
+.why-item {
+    display: flex;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+.why-item i {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    background:
+        rgba(0, 141, 255, 0.15);
+
+    color: #008DFF;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.why-grid > div:last-child {
+    min-height: 400px;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+}
+
+.why-grid > div:last-child img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.why-grid > div:last-child:hover img {
+    transform: scale(1.03);
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    background: #050F1F;
+
+    padding: 65px 24px 30px;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr 1fr;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+}
+
+.footer h4 {
+    color: #ffffff;
+
+    margin-bottom: 15px;
+
+    font-size: 14px;
+}
+
+.footer a {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #94a3b8;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.footer a:hover {
+    color: #008DFF;
+
+    transform: translateX(3px);
+}
+
+.footer-bottom {
+    border-top:
+        1px solid rgba(255, 255, 255, 0.06);
+
+    padding-top: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ========================================
+   CONTACT / CAREER FORMS
+======================================== */
+
+.celerity-form {
+    display: grid;
+
+    gap: 14px;
+}
+
+.celerity-form label {
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.celerity-form input,
+.celerity-form textarea,
+.celerity-form select {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.celerity-form input::placeholder,
+.celerity-form textarea::placeholder {
+    color: #64748b;
+}
+
+.celerity-form input:focus,
+.celerity-form textarea:focus,
+.celerity-form select:focus {
+    border-color: #008DFF;
+
+    background:
+        rgba(0, 141, 255, 0.06);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 141, 255, 0.1);
+}
+
+.celerity-form textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+.celerity-form select option {
+    background: #0B2340;
+
+    color: #ffffff;
+}
+
+.form-status {
+    display: none;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.form-status.success {
+    display: block;
+
+    background: rgba(34, 197, 94, 0.1);
+
+    border:
+        1px solid rgba(34, 197, 94, 0.25);
+
+    color: #86efac;
+}
+
+.form-status.error {
+    display: block;
+
+    background: rgba(239, 68, 68, 0.1);
+
+    border:
+        1px solid rgba(239, 68, 68, 0.25);
+
+    color: #fca5a5;
+}
+
+
+/* ========================================
+   COMING SOON
+======================================== */
+
+.coming-soon-wrap {
+    position: relative;
+}
+
+.coming-soon-badge {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    background: #D4AF37;
+
+    color: #071A2F;
+
+    font-weight: 800;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    z-index: 3;
+}
+
+.coming-soon-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(7, 26, 47, 0.6);
+
+    backdrop-filter: blur(2px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    font-weight: 800;
+
+    font-size: 18px;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   QUOTE MODAL
+======================================== */
+
+.quote-modal {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.7);
+
+    backdrop-filter: blur(8px);
+
+    z-index: 2000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.quote-modal.active {
+    display: flex;
+}
+
+.quote-box {
+    background: #0B2340;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 24px;
+
+    padding: 32px;
+
+    max-width: 500px;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+.quote-box h3 {
+    color: #008DFF;
+
+    margin-bottom: 12px;
+}
+
+.quote-box p {
+    color: #F8FAFC;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   WHATSAPP FLOATING BUTTON
+======================================== */
+
+.whatsapp-float {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 1500;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: #25D366;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px) scale(1.05);
+
+    box-shadow:
+        0 15px 35px rgba(37, 211, 102, 0.35);
+}
+
+.whatsapp-float span {
+    position: absolute;
+
+    right: 68px;
+
+    white-space: nowrap;
+
+    background: #071A2F;
+
+    color: #ffffff;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: translateX(8px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.whatsapp-float:hover span {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* ========================================
+   SCROLL REVEAL ANIMATION
+======================================== */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity 0.7s ease var(--reveal-delay, 0ms),
+        transform 0.7s ease var(--reveal-delay, 0ms);
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* ========================================
+   GENERAL ANIMATIONS
+======================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1366px) {
+
+    .main-nav {
+        gap: 16px;
+    }
+
+    .hero {
+        height: 86vh;
+
+        min-height: 580px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero-bg img {
+        object-position: center center;
+    }
+
+    .product-grid {
+        gap: 20px;
+    }
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1100px) {
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .main-nav {
+        gap: 12px;
+    }
+
+    .main-nav a {
+        font-size: 12px;
+    }
+
+    .header-inner > .btn {
+        display: none;
+    }
+
+    .div-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .site-header {
+        padding: 10px 0;
+    }
+
+    .header-inner {
+        padding: 0 18px;
+    }
+
+    .brand {
+        font-size: 12px;
+
+        gap: 8px;
+    }
+
+    .brand img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .main-nav {
+        position: fixed;
+
+        top: 62px;
+        left: 0;
+        right: 0;
+
+        background:
+            rgba(7, 26, 47, 0.98);
+
+        backdrop-filter: blur(18px);
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 16px 22px 24px;
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.08);
+
+        box-shadow:
+            0 20px 35px rgba(0, 0, 0, 0.25);
+
+        transform:
+            translateY(-130%);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition:
+            transform 0.35s ease,
+            opacity 0.35s ease;
+    }
+
+    .main-nav.open {
+        transform: translateY(0);
+
+        opacity: 1;
+
+        pointer-events: auto;
+    }
+
+    .main-nav a {
+        width: 100%;
+
+        padding: 13px 5px;
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .main-nav a::after {
+        bottom: 4px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .hero {
+        height: auto;
+
+        min-height: 650px;
+
+        padding: 120px 0 70px;
+    }
+
+    .hero-bg img {
+        object-fit: cover;
+
+        object-position: center center;
+    }
+
+    .hero-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(7, 26, 47, 0.42) 0%,
+                rgba(7, 26, 47, 0.82) 45%,
+                rgba(7, 26, 47, 0.98) 100%
+            );
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .page-hero {
+        padding:
+            125px 20px 70px;
+    }
+
+    .page-hero h1 {
+        font-size: 38px;
+    }
+
+    .section {
+        padding: 70px 20px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        height: 300px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .why-grid > div:last-child {
+        min-height: 330px;
+    }
+
+    .div-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        padding:
+            50px 20px 25px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 0 18px;
+    }
+
+    .brand {
+        max-width: 220px;
+
+        white-space: normal;
+
+        line-height: 1.2;
+    }
+
+    .brand img {
+        flex-shrink: 0;
+    }
+
+    .hero {
+        min-height: 620px;
+
+        padding-top: 110px;
+    }
+
+    .hero h1 {
+        font-size: 31px;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .hero-btns .btn {
+        width: 100%;
+    }
+
+    .page-hero {
+        padding:
+            115px 18px 60px;
+    }
+
+    .page-hero h1 {
+        font-size: 34px;
+    }
+
+    .page-hero p {
+        font-size: 14px;
+    }
+
+    .section {
+        padding: 60px 18px;
+    }
+
+    .section h2 {
+        font-size: 30px !important;
+    }
+
+    .product-card img {
+        height: 250px;
+    }
+
+    .why-grid > div:last-child {
+        min-height: 280px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+
+    .whatsapp-float {
+        right: 16px;
+        bottom: 16px;
+
+        width: 54px;
+        height: 54px;
+
+        font-size: 25px;
+    }
+
+    .whatsapp-float span {
+        display: none;
+    }
+}
+
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+
+        transform: none;
+    }
+}
